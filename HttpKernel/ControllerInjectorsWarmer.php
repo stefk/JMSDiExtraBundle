@@ -34,6 +34,10 @@ class ControllerInjectorsWarmer implements CacheWarmerInterface
 
         $classes = $this->findControllerClasses();
         foreach ($classes as $class) {
+            if ($class === 'JMS\SecurityExtraBundle\Tests\Functional\TestBundle\Controller\PostController') {
+                continue;
+            }
+
             $this->controllerResolver->createInjector($class);
         }
     }
